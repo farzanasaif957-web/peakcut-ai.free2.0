@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PeakCut AI 2.0</title>
+<style>
+:root{color-scheme:dark;--bg:#090b12;--panel:#121725;--line:#252d40;--muted:#9ba6bd;--white:#f6f8ff;--purple:#8b5cf6;--cyan:#22d3ee}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#25134b 0,transparent 35%),var(--bg);color:var(--white);font:15px Inter,system-ui,Arial}
+.wrap{max-width:980px;margin:auto;padding:28px 18px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:32px}
+.logo{font-weight:900;letter-spacing:.4px;font-size:21px}.logo span{color:var(--cyan)}.pill{border:1px solid #3a315c;color:#d7c8ff;background:#21163a;padding:7px 11px;border-radius:99px;font-size:12px}
+.hero{text-align:center;margin:36px auto 28px}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:0 0 14px;letter-spacing:-2px}.grad{background:linear-gradient(90deg,#a78bfa,#22d3ee);color:transparent;background-clip:text}.hero p{color:var(--muted);max-width:620px;margin:auto;line-height:1.6}
+.card{background:linear-gradient(145deg,#151c2d,#101522);border:1px solid var(--line);border-radius:20px;padding:22px;margin:16px 0;box-shadow:0 18px 60px #0005}
+h2{font-size:17px;margin:0 0 14px}.drop{border:1.5px dashed #46516d;border-radius:15px;padding:26px 16px;text-align:center;background:#0c1220}
+.drop strong{display:block;margin:8px 0}.muted{color:var(--muted);font-size:13px}.row{display:flex;gap:12px;flex-wrap:wrap}.field{flex:1;min-width:140px}label{display:block;color:#c8d1e3;font-size:13px;margin:12px 0 7px}
+input,select{width:100%;background:#0a1020;color:white;border:1px solid #303b55;border-radius:10px;padding:12px;font:inherit}
+button{border:0;border-radius:11px;padding:13px 18px;font-weight:800;font-size:14px;cursor:pointer}
+.primary{background:linear-gradient(90deg,var(--purple),#536dff);color:white;width:100%;margin-top:17px}.secondary{background:#202a40;color:#e8edff}
+button:disabled{opacity:.5;cursor:not-allowed}.status{margin-top:14px;color:#b9c7df;white-space:pre-wrap;line-height:1.5}.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.feature{background:#0d1423;border:1px solid #263149;border-radius:13px;padding:15px}.feature b{display:block;margin-bottom:6px}.feature p{color:var(--muted);font-size:13px;line-height:1.5;margin:0}
+.note{font-size:12px;color:#aab5ca;line-height:1.55}.hidden{display:none}
+a{color:#8eeaff}.progress{height:8px;background:#263149;border-radius:20px;overflow:hidden;margin-top:12px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .3s}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div class="logo">PEAK<span>CUT</span> AI <small>2.0</small></div><div class="pill">CREATOR STUDIO</div></header>
+<section class="hero"><h1>Turn long streams into<br><span class="grad">Shorts that hit.</span></h1><p>Find moments, format vertical clips and prepare captions in one workflow. Built for creators.</p></section>
+<section class="card">
+<h2>1. Add your video</h2>
+<div class="drop"><div style="font-size:30px">⬆️</div><strong>Choose a video file</strong><p class="muted">MP4, MOV or WebM · Large streams need a cloud processing server</p><input id="video" type="file" accept="video/*"></div>
+<label for="source">Video link (optional)</label><input id="source" type="url" placeholder="Paste a link to a video you own or are authorized to process">
+<p class="note">A YouTube watch URL can be saved as a source reference, but this starter version cannot download YouTube videos. Use a video file or an authorized direct media URL.</p>
+</section>
+<section class="card">
+<h2>2. Choose your clip settings</h2>
+<div class="row">
+<div class="field"><label>Clip length</label><select id="duration"><option value="20">20 seconds</option><option value="30" selected>30 seconds</option><option value="45">45 seconds</option><option value="60">60 seconds</option></select></div>
+<div class="field"><label>Number of clips</label><select id="count"><option>3</option><option selected>5</option><option>10</option></select></div>
+<div class="field"><label>Format</label><select id="format"><option value="vertical" selected>Vertical 9:16 Shorts</option><option value="original">Original aspect ratio</option></select></div>
+<div class="field"><label>Export quality</label><select id="quality"><option value="1080" selected>1080p (if source supports it)</option><option value="720">720p</option></select></div>
+</div>
+<button class="primary" id="start">FIND MY BEST MOMENTS</button><div class="progress"><div class="bar" id="bar"></div></div><div class="status" id="status">Ready when you are.</div>
+</section>
+<section class="card"><h2>What's included in this build</h2><div class="features">
+<div class="feature"><b>✂️ Clip creation</b><p>Backend-powered clip export using FFmpeg. Highlight ranking is an initial audio-activity baseline, not full semantic AI yet.</p></div>
+<div class="feature"><b>📱 Shorts format</b><p>Vertical 9:16 output with source-aware scaling and cropping.</p></div>
+<div class="feature"><b>💬 Captions roadmap</b><p>Caption rendering is the next module. Accurate automatic speech transcription needs a speech model and extra processing capacity.</p></div>
+<div class="feature"><b>⚡ Long streams</b><p>Designed for server processing. Five-hour uploads and five-minute turnaround are goals, not guarantees on free hosting.</p></div>
+</div></section>
+<p class="note">Only upload videos you own or have permission to edit. Don't share private or confidential recordings. This demo requires the PeakCut backend to be running; GitHub Pages alone cannot process long videos.</p>
+</main>
+<script>
+const API = (localStorage.getItem("peakcut_api") || "http://localhost:8000").replace(/\/$/,"");
+const $=id=>document.getElementById(id);
+$("start").addEventListener("click", async()=>{
+ const file=$("video").files[0], link=$("source").value.trim();
+ if(!file){$("status").textContent=link ? "Link saved as a source reference. This version cannot fetch YouTube videos. Please upload an authorized video file to create clips." : "Choose a video file first.";return;}
+ const btn=$("start");btn.disabled=true;$("bar").style.width="5%";$("status").textContent="Uploading video to the PeakCut processing server…";
+ try{
+  const fd=new FormData();fd.append("file",file);fd.append("duration",$("duration").value);fd.append("count",$("count").value);fd.append("format",$("format").value);fd.append("quality",$("quality").value);
+  const res=await fetch(API+"/process",{method:"POST",body:fd});
+  if(!res.ok) throw new Error(await res.text());
+  $("bar").style.width="100%";const data=await res.json();
+  $("status").textContent="Finished! "+data.clips.length+" clips created.\n"+data.clips.map(c=>"• "+c.name+" — "+c.download_url).join("\n");
+ }catch(e){$("bar").style.width="0%";$("status").textContent="Couldn't reach the processing server.\n"+e.message+"\n\nFor local testing, start the backend and set the API address to your server URL."}
+ finally{btn.disabled=false;}
+});
+</script></body></html>
