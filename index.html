@@ -49,8 +49,7 @@ a{color:#8eeaff}.progress{height:8px;background:#263149;border-radius:20px;overf
 <p class="note">Only upload videos you own or have permission to edit. Don't share private or confidential recordings. This demo requires the PeakCut backend to be running; GitHub Pages alone cannot process long videos.</p>
 </main>
 <script>
-const API = (localStorage.getItem("peakcut_api") || "http://localhost:8000").replace(/\/$/,"");
-const $=id=>document.getElementById(id);
+const API = "https://peakcut-backend.onrender.com";
 $("start").addEventListener("click", async()=>{
  const file=$("video").files[0], link=$("source").value.trim();
  if(!file){$("status").textContent=link ? "Link saved as a source reference. This version cannot fetch YouTube videos. Please upload an authorized video file to create clips." : "Choose a video file first.";return;}
